@@ -19,11 +19,10 @@
         };
 
         sourceRoot = ".";
-        buildPhase = pkgs.tarballs.unpackArchive $src;
 
 
         installPhase = ''
-        install -m775 -D $src $out/bin/kubebuilder
+        install -m775 -D kubebuilder $out/bin/kubebuilder
         '';
 
         shellHook = ''
