@@ -19,13 +19,14 @@
         };
 
         sourceRoot = ".";
+        buildPhase = pkgs.tarballs.unpackArchive $src;
+
 
         installPhase = ''
+        install -m775 -D $src $out/bin/kubebuilder
         '';
 
         shellHook = ''
-        echo $src
-        install -m755 -D $src $out/bin/kubebuilder
         echo "Kubebuilder is available: $out/bin/kubebuilder"
         $out/bin/kubebuilder version
       '';
