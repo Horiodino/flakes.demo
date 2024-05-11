@@ -20,9 +20,10 @@
         };
 
         dontUnpack = true;
+	phases = [ "installPhase" ];
 
         installPhase = ''
-          install -m775 -D $src $out/bin/kubebuilder
+          cp $src $out/bin/kubebuilder
         '';
 
         shellHook = ''
