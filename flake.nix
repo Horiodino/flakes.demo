@@ -21,8 +21,10 @@
 
         dontUnpack = true;
 	phases = [ "installPhase" ];
+	dontBuild = true;
 
         installPhase = ''
+	  mkdir -p $out/bin
           cp $src $out/bin/kubebuilder
         '';
 
