@@ -26,6 +26,7 @@
         installPhase = ''
 	  mkdir -p $out/bin
           cp $src $out/bin/kubebuilder
+	  chmod +x $out/bin/kubebuilder
         '';
 
         shellHook = ''
