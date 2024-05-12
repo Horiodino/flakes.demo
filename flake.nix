@@ -32,7 +32,7 @@
 
           src = pkgs.fetchurl {
             url = getBinaryUrl { system = pkgs.system; version = version; };
-            sha256 = "sha256-RCTN6C2PUiyiAN2Uy+HTUUQRsHOQRuQevFOGLqGZyQQ=";
+            sha256 = "sha256-RCTN6C2PUjyiAN2Uy+HTUUQRsHOQRuQevFOGLqGZyQQ=";
           };
 
           dontUnpack = true;
