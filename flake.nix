@@ -17,7 +17,7 @@
         let
           urls = {
             "x86_64-linux" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/${version}/kubebuilder_linux_amd64";
-            "aarch64-darwin" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/${version}/kubebuilder_darwin_amd64";
+            "aarch64-darwin" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/${version}/kubebuilder_darwin_arm64";
             "x86_64-darwin" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/${version}/kubebuilder_darwin_amd64";
             "aarch64-linux" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/${version}/kubebuilder_linux_arm64";
           };
