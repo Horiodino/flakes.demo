@@ -12,6 +12,17 @@
         inherit system;
         pkgs = import nixpkgs { inherit system; };
       });
+
+      getBinaryUrl = { system, version }: 
+        let
+          urls = {
+            "x86_64-linux" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/${version}/kubebuilder_linux_amd64";
+            "aarch64-darwin" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/${version}/kubebuilder_darwin_amd64";
+            "x86_64-darwin" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/${version}/kubebuilder_darwin_amd64";
+            "aarch64-linux" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/${version}/kubebuilder_linux_arm64";
+          };
+        in urls.${system};
+        
     in
     {
       packages = forEachSystem ({ pkgs, ... }: {
@@ -20,7 +31,7 @@
           version = "3.14.2";
 
           src = pkgs.fetchurl {
-            url = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/v3.14.2/kubebuilder_linux_amd64";
+            url = getBinaryUrl { system = pkgs.system; version = version; };
             sha256 = "sha256-RCTN6C2PUjyiAN2Uy+HTUUQRsHOQRuQevFOGLqGZyQQ=";
           };
 
