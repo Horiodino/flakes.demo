@@ -16,12 +16,20 @@
       getBinaryUrl = { system, version }: 
         let
           urls = {
-            "x86_64-linux" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/$v${version}/kubebuilder_linux_amd64";
+            "x86_64-linux" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${version}/kubebuilder_linux_amd64";
             "aarch64-darwin" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${version}/kubebuilder_darwin_arm64";
             "x86_64-darwin" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${version}/kubebuilder_darwin_amd64";
             "aarch64-linux" = "https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${version}/kubebuilder_linux_arm64";
           };
         in urls.${system};
+
+        getBinaryHash = { system }:
+          let 
+          hash = {
+            "aarch64-darwin" = "sha256-xtnAvDvfoALwRj1DZB66Pk5kLJ01FMXz885iar/pXIM=";
+            "x86_64-linux" = "sha256-RCTN6C2PUjyiAN2Uy+HTUUQRsHOQRuQevFOGLqGZyQQ=";
+          };
+          in hash.${system};
         
     in
     {
@@ -32,7 +40,7 @@
 
           src = pkgs.fetchurl {
             url = getBinaryUrl { system = pkgs.system; version = version; };
-            sha256 = "sha256-RCTN6C2PUjyiAN2Uy+HTUUQRsHOQRuQevFOGLqGZyQQ=";
+            sha256 = getBinaryHash {system = pkgs.system;};
           };
 
           dontUnpack = true;
