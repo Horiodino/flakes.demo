@@ -26,7 +26,7 @@
         getBinaryHash = { system }:
           let 
           hash = {
-            "aarch64-darwin" = "sha256-xtnAvDvfoALwRj1DZB66Pk5kLJ01FMXz885iar/pXIM=";
+            "aarch64-darwin" = "sha256-xtnAvDvfoALwRj1DZB66Pk5kLJ0lFMXz885iar/pXIM=";
             "x86_64-linux" = "sha256-RCTN6C2PUjyiAN2Uy+HTUUQRsHOQRuQevFOGLqGZyQQ=";
           };
           in hash.${system};
